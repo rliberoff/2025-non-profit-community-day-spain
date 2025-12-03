@@ -1,10 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
-    "id": "generar_agradecimiento",
+    "id": "generate_thank_you",
     "title": "Generar Agradecimiento",
     "description": "Genera un mensaje de agradecimiento personalizado para un donante usando IA",
     "operation": {
-        "url": "/api/agent/generar-agradecimiento",
+        "url": "/api/agent/generate-thank-you",
         "method": "POST"
     },
     "parameters": {

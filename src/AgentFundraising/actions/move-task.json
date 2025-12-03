@@ -1,10 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
-    "id": "mover_tarea",
+    "id": "move_task",
     "title": "Mover Tarea",
     "description": "Mueve una tarea entre columnas del tablero Kanban (Por Hacer, En Progreso, Completado)",
     "operation": {
-        "url": "/api/agent/mover-tarea",
+        "url": "/api/agent/move-task",
         "method": "POST"
     },
     "parameters": {

@@ -1,10 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
-    "id": "listar_usuarios",
-    "title": "Listar Usuarios",
-    "description": "Obtiene la lista de miembros del equipo disponibles para asignar tareas",
+    "id": "list_campaigns",
+    "title": "Listar Campañas",
+    "description": "Obtiene la lista de todas las campañas de recaudación existentes",
     "operation": {
-        "url": "/api/agent/listar-usuarios",
+        "url": "/api/agent/list-campaigns",
         "method": "GET"
     },
     "parameters": {

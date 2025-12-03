@@ -24,44 +24,44 @@
     ],
     "actions": [
         {
-            "id": "actions_crear_campaña",
-            "file": "actions/crear-campaña.json"
+            "id": "actions_create_campaign",
+            "file": "actions/create-campaign.json"
         },
         {
-            "id": "actions_listar_campañas",
-            "file": "actions/listar-campañas.json"
+            "id": "actions_list_campaigns",
+            "file": "actions/list-campaigns.json"
         },
         {
-            "id": "actions_obtener_campaña",
-            "file": "actions/obtener-campaña.json"
+            "id": "actions_get_campaign",
+            "file": "actions/get-campaign.json"
         },
         {
-            "id": "actions_agregar_tarea",
-            "file": "actions/agregar-tarea.json"
+            "id": "actions_add_task",
+            "file": "actions/add-task.json"
         },
         {
-            "id": "actions_mover_tarea",
-            "file": "actions/mover-tarea.json"
+            "id": "actions_move_task",
+            "file": "actions/move-task.json"
         },
         {
-            "id": "actions_asignar_tarea",
-            "file": "actions/asignar-tarea.json"
+            "id": "actions_assign_task",
+            "file": "actions/assign-task.json"
         },
         {
-            "id": "actions_obtener_tablero_kanban",
-            "file": "actions/obtener-tablero-kanban.json"
+            "id": "actions_get_kanban_board",
+            "file": "actions/get-kanban-board.json"
         },
         {
-            "id": "actions_listar_usuarios",
-            "file": "actions/listar-usuarios.json"
+            "id": "actions_list_users",
+            "file": "actions/list-users.json"
         },
         {
-            "id": "actions_agregar_comentario",
-            "file": "actions/agregar-comentario.json"
+            "id": "actions_add_comment",
+            "file": "actions/add-comment.json"
         },
         {
-            "id": "actions_generar_agradecimiento",
-            "file": "actions/generar-agradecimiento.json"
+            "id": "actions_generate_thank_you",
+            "file": "actions/generate-thank-you.json"
         }
     ]
 }

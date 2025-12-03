@@ -1,10 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
-    "id": "obtener_campaña",
+    "id": "get_campaign",
     "title": "Obtener Campaña",
     "description": "Obtiene los detalles de una campaña específica incluyendo sus tareas",
     "operation": {
-        "url": "/api/agent/obtener-campana",
+        "url": "/api/agent/get-campaign",
         "method": "GET"
     },
     "parameters": {

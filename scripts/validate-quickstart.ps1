@@ -96,7 +96,7 @@ Write-Host "`n=== USER STORY 1: CAMPAIGN MANAGEMENT ===" -ForegroundColor Magent
 $campaign1 = Test-AgentEndpoint `
     -TestName "Create Campaign: Navidad Solidaria" `
     -Method "POST" `
-    -Endpoint "/api/agent/tool/crear-campana" `
+    -Endpoint "/api/agent/tool/create-campaign" `
     -Body @{ nombre = "Navidad Solidaria"; meta_euros = 5000 } `
     -Validation {
         param($response)
@@ -106,7 +106,7 @@ $campaign1 = Test-AgentEndpoint `
 $campaign2 = Test-AgentEndpoint `
     -TestName "Create Campaign: Educación Rural" `
     -Method "POST" `
-    -Endpoint "/api/agent/tool/crear-campana" `
+    -Endpoint "/api/agent/tool/create-campaign" `
     -Body @{ nombre = "Educación Rural"; meta_euros = 3000 } `
     -Validation {
         param($response)
@@ -116,7 +116,7 @@ $campaign2 = Test-AgentEndpoint `
 $campaigns = Test-AgentEndpoint `
     -TestName "List All Campaigns" `
     -Method "GET" `
-    -Endpoint "/api/agent/tool/listar-campanas" `
+    -Endpoint "/api/agent/tool/list-campaigns" `
     -Validation {
         param($response)
         return $response.total -ge 2
@@ -126,7 +126,7 @@ if ($campaign1 -and $campaign1.id) {
     Test-AgentEndpoint `
         -TestName "Get Campaign Details" `
         -Method "GET" `
-        -Endpoint "/api/agent/tool/obtener-campana?campaña_id=$($campaign1.id)" `
+        -Endpoint "/api/agent/tool/get-campaign?campaña_id=$($campaign1.id)" `
         -Validation {
             param($response)
             return $response.nombre -eq "Navidad Solidaria"
@@ -139,7 +139,7 @@ Write-Host "`n=== USER STORY 2: TASK MANAGEMENT ===" -ForegroundColor Magenta
 $users = Test-AgentEndpoint `
     -TestName "List Available Users" `
     -Method "GET" `
-    -Endpoint "/api/agent/tool/listar-usuarios" `
+    -Endpoint "/api/agent/tool/list-users" `
     -Validation {
         param($response)
         return $response.usuarios.Count -ge 3
@@ -150,7 +150,7 @@ if ($campaign1 -and $campaign1.id) {
     $task1 = Test-AgentEndpoint `
         -TestName "Add Task to Campaign" `
         -Method "POST" `
-        -Endpoint "/api/agent/tool/agregar-tarea" `
+        -Endpoint "/api/agent/tool/add-task" `
         -Body @{ 
             campaña_id  = $campaign1.id
             descripcion = "Contactar donantes principales"
@@ -165,7 +165,7 @@ if ($task1 -and $task1.id -and $users -and $users.usuarios.Count -gt 0) {
     Test-AgentEndpoint `
         -TestName "Assign Task to User" `
         -Method "POST" `
-        -Endpoint "/api/agent/tool/asignar-tarea" `
+        -Endpoint "/api/agent/tool/assign-task" `
         -Body @{ 
             tarea_id   = $task1.id
             usuario_id = $users.usuarios[0].id
@@ -178,7 +178,7 @@ if ($task1 -and $task1.id -and $users -and $users.usuarios.Count -gt 0) {
     Test-AgentEndpoint `
         -TestName "Move Task to In Progress" `
         -Method "POST" `
-        -Endpoint "/api/agent/tool/mover-tarea" `
+        -Endpoint "/api/agent/tool/move-task" `
         -Body @{ 
             tarea_id      = $task1.id
             nueva_columna = "en_progreso"
@@ -193,7 +193,7 @@ if ($campaign1 -and $campaign1.id) {
     Test-AgentEndpoint `
         -TestName "Get Kanban Board" `
         -Method "GET" `
-        -Endpoint "/api/agent/tool/obtener-tablero-kanban?campaña_id=$($campaign1.id)" `
+        -Endpoint "/api/agent/tool/get-kanban-board?campaña_id=$($campaign1.id)" `
         -Validation {
             param($response)
             return $response.campaña_id -eq $campaign1.id
@@ -208,7 +208,7 @@ if ($task1 -and $task1.id) {
     $comment1 = Test-AgentEndpoint `
         -TestName "Add Comment to Task" `
         -Method "POST" `
-        -Endpoint "/api/agent/tool/agregar-comentario" `
+        -Endpoint "/api/agent/tool/add-comment" `
         -Body @{ 
             tarea_id = $task1.id
             texto    = "Llamé a 10 donantes hoy, 3 confirmaron su participación"
@@ -221,7 +221,7 @@ if ($task1 -and $task1.id) {
     Test-AgentEndpoint `
         -TestName "List Task Comments" `
         -Method "GET" `
-        -Endpoint "/api/agent/tool/listar-comentarios?tarea_id=$($task1.id)" `
+        -Endpoint "/api/agent/tool/list-comments?tarea_id=$($task1.id)" `
         -Validation {
             param($response)
             return $response.comentarios.Count -ge 1
@@ -235,7 +235,7 @@ if ($campaign1 -and $campaign1.nombre) {
     Test-AgentEndpoint `
         -TestName "Generate Thank-You Message" `
         -Method "POST" `
-        -Endpoint "/api/agent/tool/generar-agradecimiento" `
+        -Endpoint "/api/agent/tool/generate-thank-you" `
         -Body @{ 
             nombre_donante = "María García"
             campaña_nombre = $campaign1.nombre

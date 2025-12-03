@@ -1,10 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
-    "id": "crear_campaña",
+    "id": "create_campaign",
     "title": "Crear Campaña",
     "description": "Crea una nueva campaña de recaudación de fondos con un nombre y una meta financiera en euros",
     "operation": {
-        "url": "/api/agent/crear-campana",
+        "url": "/api/agent/create-campaign",
         "method": "POST"
     },
     "parameters": {
