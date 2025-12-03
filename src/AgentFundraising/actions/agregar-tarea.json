@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
+    "id": "agregar_tarea",
+    "title": "Agregar Tarea",
+    "description": "Agrega una nueva tarea a una campaña existente",
+    "operation": {
+        "url": "/api/agent/agregar-tarea",
+        "method": "POST"
+    },
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "campaña_id": {
+                "type": "string",
+                "description": "ID de la campaña a la que agregar la tarea"
+            },
+            "descripcion": {
+                "type": "string",
+                "description": "Descripción de la tarea"
+            },
+            "asignado_a": {
+                "type": "string",
+                "description": "ID del usuario asignado (opcional)"
+            }
+        },
+        "required": [
+            "campaña_id",
+            "descripcion"
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
+    "id": "obtener_tablero_kanban",
+    "title": "Obtener Tablero Kanban",
+    "description": "Obtiene el tablero Kanban de una campaña con tareas agrupadas por columna",
+    "operation": {
+        "url": "/api/agent/obtener-tablero-kanban",
+        "method": "GET"
+    },
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "campaña_id": {
+                "type": "string",
+                "description": "ID de la campaña"
+            }
+        },
+        "required": [
+            "campaña_id"
+        ]
+    }
+}

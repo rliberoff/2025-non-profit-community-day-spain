@@ -1,0 +1,58 @@
+# .dockerignore for Fundraising Agent
+# Excludes unnecessary files from Docker build context
+
+# Build outputs
+bin/
+obj/
+out/
+publish/
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Package manager files
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.md
+CHANGELOG.md
+
+# CI/CD
+.github/
+azure-pipelines.yml
+
+# Terraform
+infra/
+*.tf
+*.tfvars
+
+# Other
+*.log
+*.tmp
+.env
+.env.*
+appsettings.Development.json

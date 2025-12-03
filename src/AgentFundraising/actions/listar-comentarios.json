@@ -1,0 +1,22 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
+    "id": "listar_comentarios",
+    "title": "Listar Comentarios",
+    "description": "Obtiene todos los comentarios de una tarea en orden cronológico",
+    "operation": {
+        "url": "/api/agent/listar-comentarios",
+        "method": "GET"
+    },
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "tarea_id": {
+                "type": "string",
+                "description": "ID de la tarea"
+            }
+        },
+        "required": [
+            "tarea_id"
+        ]
+    }
+}

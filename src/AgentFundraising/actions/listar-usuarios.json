@@ -1,0 +1,15 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
+    "id": "listar_usuarios",
+    "title": "Listar Usuarios",
+    "description": "Obtiene la lista de miembros del equipo disponibles para asignar tareas",
+    "operation": {
+        "url": "/api/agent/listar-usuarios",
+        "method": "GET"
+    },
+    "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+    }
+}

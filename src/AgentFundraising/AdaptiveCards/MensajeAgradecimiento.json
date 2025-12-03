@@ -1,0 +1,81 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "💝 Mensaje de Agradecimiento Generado",
+                    "size": "Large",
+                    "weight": "Bolder",
+                    "wrap": true
+                },
+                {
+                    "type": "FactSet",
+                    "spacing": "Medium",
+                    "facts": [
+                        {
+                            "title": "Donante:",
+                            "value": "${nombre_donante}"
+                        },
+                        {
+                            "title": "Campaña:",
+                            "value": "${campaña_nombre}"
+                        },
+                        {
+                            "title": "Monto:",
+                            "value": "${monto_euros}€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "Medium",
+            "separator": true,
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Mensaje:",
+                    "weight": "Bolder",
+                    "size": "Medium",
+                    "wrap": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${texto_generado}",
+                    "spacing": "Small",
+                    "wrap": true,
+                    "isSubtle": false
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "✨ Este mensaje ha sido generado con inteligencia artificial y puede ser editado según tus necesidades.",
+            "size": "Small",
+            "isSubtle": true,
+            "spacing": "Medium",
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "📧 Copiar al portapapeles",
+            "url": "https://example.com/copy?text=${texto_generado}"
+        },
+        {
+            "type": "Action.Submit",
+            "title": "🔄 Generar otro mensaje",
+            "data": {
+                "action": "generar_agradecimiento"
+            }
+        }
+    ]
+}

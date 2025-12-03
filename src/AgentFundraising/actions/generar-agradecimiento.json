@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin-action/v1.0/schema.json",
+    "id": "generar_agradecimiento",
+    "title": "Generar Agradecimiento",
+    "description": "Genera un mensaje de agradecimiento personalizado para un donante usando IA",
+    "operation": {
+        "url": "/api/agent/generar-agradecimiento",
+        "method": "POST"
+    },
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "nombre_donante": {
+                "type": "string",
+                "description": "Nombre del donante"
+            },
+            "campaña_nombre": {
+                "type": "string",
+                "description": "Nombre de la campaña"
+            },
+            "monto_euros": {
+                "type": "number",
+                "description": "Monto donado en euros (opcional)"
+            }
+        },
+        "required": [
+            "nombre_donante",
+            "campaña_nombre"
+        ]
+    }
+}

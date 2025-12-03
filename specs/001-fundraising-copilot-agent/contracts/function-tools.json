@@ -1,0 +1,465 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "Agent Framework Function Tools",
+    "description": "Function tool definitions for the Fundraising Campaign Management agent",
+    "version": "1.0.0",
+    "tools": [
+        {
+            "name": "crear_campaña",
+            "description": "Crea una nueva campaña de recaudación de fondos con un nombre y una meta financiera en euros",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string",
+                        "description": "Nombre de la campaña (ej: 'Navidad Solidaria')"
+                    },
+                    "meta_euros": {
+                        "type": "number",
+                        "description": "Meta financiera en euros (debe ser mayor que cero)",
+                        "minimum": 0.01
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "meta_euros"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID único de la campaña creada"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "meta_euros": {
+                        "type": "number"
+                    },
+                    "mensaje": {
+                        "type": "string",
+                        "description": "Mensaje de confirmación"
+                    }
+                }
+            }
+        },
+        {
+            "name": "listar_campañas",
+            "description": "Obtiene la lista de todas las campañas de recaudación existentes",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "returns": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "nombre": {
+                            "type": "string"
+                        },
+                        "meta_euros": {
+                            "type": "number"
+                        },
+                        "num_tareas": {
+                            "type": "integer",
+                            "description": "Número de tareas asociadas"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "obtener_campaña",
+            "description": "Obtiene los detalles de una campaña específica incluyendo sus tareas",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "campaña_id": {
+                        "type": "string",
+                        "description": "ID de la campaña"
+                    }
+                },
+                "required": [
+                    "campaña_id"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "meta_euros": {
+                        "type": "number"
+                    },
+                    "tareas": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "agregar_tarea",
+            "description": "Agrega una nueva tarea a una campaña. La tarea se crea en la columna 'por_hacer' por defecto",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "campaña_id": {
+                        "type": "string",
+                        "description": "ID de la campaña a la que pertenece la tarea"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "description": "Descripción de la tarea (ej: 'Contactar donantes', 'Organizar evento')"
+                    },
+                    "asignado_a": {
+                        "type": "string",
+                        "description": "ID del usuario asignado (opcional). Valores válidos: 'u1-coordinadora', 'u2-voluntario', 'u3-voluntario'",
+                        "enum": [
+                            "u1-coordinadora",
+                            "u2-voluntario",
+                            "u3-voluntario"
+                        ]
+                    }
+                },
+                "required": [
+                    "campaña_id",
+                    "descripcion"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "columna": {
+                        "type": "string",
+                        "enum": [
+                            "por_hacer"
+                        ]
+                    },
+                    "asignado_a": {
+                        "type": "string"
+                    },
+                    "mensaje": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "mover_tarea",
+            "description": "Mueve una tarea a una columna diferente del tablero Kanban (por_hacer, en_progreso, completado)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tarea_id": {
+                        "type": "string",
+                        "description": "ID de la tarea a mover"
+                    },
+                    "nueva_columna": {
+                        "type": "string",
+                        "description": "Columna de destino",
+                        "enum": [
+                            "por_hacer",
+                            "en_progreso",
+                            "completado"
+                        ]
+                    }
+                },
+                "required": [
+                    "tarea_id",
+                    "nueva_columna"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "columna_anterior": {
+                        "type": "string"
+                    },
+                    "columna_nueva": {
+                        "type": "string"
+                    },
+                    "mensaje": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "asignar_tarea",
+            "description": "Asigna una tarea a un miembro del equipo (coordinadora o voluntario)",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tarea_id": {
+                        "type": "string",
+                        "description": "ID de la tarea"
+                    },
+                    "usuario_id": {
+                        "type": "string",
+                        "description": "ID del usuario. Valores válidos: 'u1-coordinadora' (Ana García), 'u2-voluntario' (Carlos Ruiz), 'u3-voluntario' (María López)",
+                        "enum": [
+                            "u1-coordinadora",
+                            "u2-voluntario",
+                            "u3-voluntario"
+                        ]
+                    }
+                },
+                "required": [
+                    "tarea_id",
+                    "usuario_id"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "asignado_a": {
+                        "type": "string"
+                    },
+                    "nombre_usuario": {
+                        "type": "string"
+                    },
+                    "mensaje": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "agregar_comentario",
+            "description": "Agrega un comentario a una tarea existente",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tarea_id": {
+                        "type": "string",
+                        "description": "ID de la tarea"
+                    },
+                    "texto": {
+                        "type": "string",
+                        "description": "Contenido del comentario"
+                    }
+                },
+                "required": [
+                    "tarea_id",
+                    "texto"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "tarea_id": {
+                        "type": "string"
+                    },
+                    "texto": {
+                        "type": "string"
+                    },
+                    "fecha_creacion": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "mensaje": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "listar_comentarios",
+            "description": "Obtiene todos los comentarios de una tarea en orden cronológico",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tarea_id": {
+                        "type": "string",
+                        "description": "ID de la tarea"
+                    }
+                },
+                "required": [
+                    "tarea_id"
+                ]
+            },
+            "returns": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "texto": {
+                            "type": "string"
+                        },
+                        "fecha_creacion": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "generar_agradecimiento",
+            "description": "Genera un mensaje de agradecimiento personalizado para un donante usando IA. El mensaje estará en español y listo para enviar",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nombre_donante": {
+                        "type": "string",
+                        "description": "Nombre completo del donante (ej: 'María García')"
+                    },
+                    "campaña_nombre": {
+                        "type": "string",
+                        "description": "Nombre de la campaña a la que contribuyó (ej: 'Navidad Solidaria')"
+                    },
+                    "monto_euros": {
+                        "type": "number",
+                        "description": "Cantidad donada en euros (opcional). Si no se proporciona, se genera un mensaje genérico sin mencionar el monto",
+                        "minimum": 0
+                    }
+                },
+                "required": [
+                    "nombre_donante",
+                    "campaña_nombre"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "nombre_donante": {
+                        "type": "string"
+                    },
+                    "campaña_nombre": {
+                        "type": "string"
+                    },
+                    "monto_euros": {
+                        "type": "number"
+                    },
+                    "texto_generado": {
+                        "type": "string",
+                        "description": "Mensaje de agradecimiento generado por IA en español"
+                    }
+                }
+            }
+        },
+        {
+            "name": "listar_usuarios",
+            "description": "Obtiene la lista de los 3 miembros predefinidos del equipo (1 coordinadora + 2 voluntarios)",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "returns": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "nombre": {
+                            "type": "string"
+                        },
+                        "rol": {
+                            "type": "string",
+                            "enum": [
+                                "coordinadora",
+                                "voluntario"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "obtener_tablero_kanban",
+            "description": "Obtiene el tablero Kanban completo de una campaña con todas las tareas organizadas por columna",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "campaña_id": {
+                        "type": "string",
+                        "description": "ID de la campaña"
+                    }
+                },
+                "required": [
+                    "campaña_id"
+                ]
+            },
+            "returns": {
+                "type": "object",
+                "properties": {
+                    "campaña": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "nombre": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "tablero": {
+                        "type": "object",
+                        "properties": {
+                            "por_hacer": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "en_progreso": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "completado": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

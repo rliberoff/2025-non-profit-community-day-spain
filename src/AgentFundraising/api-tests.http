@@ -1,0 +1,146 @@
+###
+# Fundraising Agent API Tests
+# Base URL: https://localhost:5052
+###
+
+@baseUrl = http://localhost:5052
+@contentType = application/json
+
+### Health Check
+GET {{baseUrl}}/health
+Accept: application/json
+
+###
+# Agent Chat - Create a new campaign
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Crea una nueva campaña llamada 'Maratón Solidario 2025' con el objetivo de recaudar 50000 euros para equipamiento deportivo"
+}
+
+###
+# Agent Chat - List all campaigns
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Muéstrame todas las campañas activas"
+}
+
+###
+# Agent Chat - Get specific campaign details
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Dame los detalles de la campaña 'Ayuda a Refugiados'"
+}
+
+###
+# Agent Chat - Get Kanban board
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Muéstrame el tablero kanban de la campaña 'Ayuda a Refugiados'"
+}
+
+###
+# Agent Chat - Create a new task
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Crea una tarea para diseñar carteles publicitarios en la campaña 'Ayuda a Refugiados'"
+}
+
+###
+# Agent Chat - Assign task to user
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Asigna la tarea de organizar evento de presentación a María García"
+}
+
+###
+# Agent Chat - Move task to another column
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Mueve la tarea 'Organizar evento de presentación' a la columna En Progreso"
+}
+
+###
+# Agent Chat - Add comment to task
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Agrega un comentario a la tarea 'Organizar evento de presentación': 'Ya tenemos confirmado el lugar para el evento'"
+}
+
+###
+# Agent Chat - List comments for a task
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Muéstrame todos los comentarios de la tarea 'Organizar evento de presentación'"
+}
+
+###
+# Agent Chat - List all users
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Lista todos los usuarios disponibles en el sistema"
+}
+
+###
+# Agent Chat - Generate thank you message
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Genera un mensaje de agradecimiento personalizado para un donante que contribuyó con 500 euros a la campaña 'Ayuda a Refugiados'"
+}
+
+###
+# Agent Chat - Complex query about campaign status
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "¿Cuál es el estado actual de la campaña 'Ayuda a Refugiados'? ¿Cuánto falta por recaudar?"
+}
+
+###
+# Agent Chat - Ask about team availability
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "¿Qué voluntarios están disponibles para ayudar con tareas de marketing?"
+}
+
+###
+# Agent Chat - Request recommendations
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Dame recomendaciones para mejorar la recaudación de fondos en nuestra próxima campaña"
+}
+
+###
+# Agent Chat - General information query
+POST {{baseUrl}}/agent/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Explícame cómo puedo usar este sistema para gestionar campañas de recaudación"
+}
