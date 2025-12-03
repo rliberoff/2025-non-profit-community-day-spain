@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
+    "version": "v1.5",
+    "name": "Agent Fundraising ${{APP_NAME_SUFFIX}}",
+    "description": "Asistente inteligente para gestionar campañas de recaudación de fondos en organizaciones sin fines de lucro. Ayuda a crear campañas, organizar tareas en tableros Kanban, colaborar con comentarios y generar mensajes de agradecimiento personalizados con IA.",
+    "instructions": "$[file('instruction.txt')]",
+    "conversation_starters": [
+        {
+            "title": "Ver mis campañas",
+            "text": "Muéstrame todas las campañas de recaudación activas"
+        },
+        {
+            "title": "Crear campaña",
+            "text": "Quiero crear una nueva campaña de recaudación"
+        },
+        {
+            "title": "Ver tablero Kanban",
+            "text": "Muéstrame el tablero de tareas de la campaña Navidad Solidaria"
+        },
+        {
+            "title": "Generar agradecimiento",
+            "text": "Genera un mensaje de agradecimiento para un donante"
+        }
+    ],
+    "actions": [
+        {
+            "id": "fundraisingApiPlugin",
+            "file": "apiPlugin.json"
+        }
+    ]
+}

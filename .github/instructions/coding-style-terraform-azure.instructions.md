@@ -25,12 +25,11 @@ When generating Terraform code for Azure, always follow best practices and conve
 - Always try to use implicit dependencies over explicit dependencies where possible in Terraform.
 - When generating Terraform resource names, ensure they are unique and descriptive, lower-case, and snake_case.
 - Be sure to include any necessary provider configurations, backend settings, and required variables in the generated code.
-- Ensure the generated terraform code always includes a top level `tag` variable map that is used on all taggable resources, with at least the following tags: `Environment`, `Project`, and `Owner`.
+- Ensure the generated terraform code always includes a top level `tags` variable map that is used on all taggable resources, with at least the following tags: `Environment`, `Project`, and `Owner`.
 - Ensure that sensitive information such as passwords, API keys, and secrets are not hardcoded in the Terraform code. Use variables and values in `.tfvars` files instead.
 - Do not assume any prior knowledge about the user's Azure environment; always seek clarification when in doubt.
 - Do not ask for Azure specific information like instance types, instead focus on high level requirements and attempt to map them to Azure services for the user.
 - Before finalizing the Terraform code, always confirm with the user that all requirements have been accurately captured and addressed.
-- All output should be created in the `output/azure/` directory with appropriate filenames.
 - Never use `null_resource`, instead prefer `terraform_data`.
 - Any sensitive information in output must be marked always as `sensitive = true`.
 - Always use the latest version of Terraform unless a specific version is defined or requested.
@@ -58,8 +57,8 @@ When generating Terraform code for Azure, always follow best practices and conve
 
 - **Consistent prefix pattern**: Use Azure resource abbreviations (e.g., `rg-`, `acr`, `appcs-`, `kv-`, `appi-`)
   - Reference: [Abbreviation recommendations for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
-- **Suffix strategy with locals**: Compute resource names with suffixes in locals block:
-- **Module folders or directory names**: Use kebab-case for module folder names using the same abbreviation strategy.
+- **Suffix strategy with locals**: Compute resource names with suffixes in locals block
+- **Module folders or directory names**: Use kebab-case for module folder names using the same abbreviation strategy
 
   ```terraform
   locals {

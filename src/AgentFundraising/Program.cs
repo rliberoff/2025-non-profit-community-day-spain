@@ -38,19 +38,41 @@ builder.Services.AddOpenTelemetry()
         .AddService(
             serviceName: serviceName,
             serviceVersion: serviceVersion))
-    .WithTracing(tracing => tracing
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation()
-        .AddSource(serviceName)
-        .AddConsoleExporter())
-    .WithMetrics(metrics => metrics
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation()
-        .AddMeter(serviceName)
-        .AddConsoleExporter());
+    .WithTracing(tracing =>
+    {
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddSource(serviceName);
+        
+        // Only export to console in non-development environments
+        if (!builder.Environment.IsDevelopment())
+        {
+            tracing.AddConsoleExporter();
+        }
+    })
+    .WithMetrics(metrics =>
+    {
+        metrics
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddMeter(serviceName);
+        
+        // Only export to console in non-development environments
+        if (!builder.Environment.IsDevelopment())
+        {
+            metrics.AddConsoleExporter();
+        }
+    });
 
-builder.Logging.AddOpenTelemetry(logging => logging
-    .AddConsoleExporter());
+builder.Logging.AddOpenTelemetry(logging =>
+{
+    // Only export to console in non-development environments
+    if (!builder.Environment.IsDevelopment())
+    {
+        logging.AddConsoleExporter();
+    }
+});
 
 // Register AgentState as singleton to maintain data in memory
 builder.Services.AddSingleton(sp =>
