@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Agent.Fundraising", "s
 EndProject
 Project("{A9E3F50B-275E-4AF7-ADCE-8BE12D41E305}") = "Demo.Agent.Fundraising.M365", "src\Demo.Agent.Fundraising.M365\Demo.Agent.Fundraising.M365.atkproj", "{8F76CD28-B18B-232A-06DD-3361DD285E49}"
 EndProject
+Project("{A9E3F50B-275E-4AF7-ADCE-8BE12D41E305}") = "M365.AgentFundraising", "src\M365.AgentFundraising\M365.AgentFundraising.atkproj", "{8F76CD28-B18B-232A-06DD-3361DD285E49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
