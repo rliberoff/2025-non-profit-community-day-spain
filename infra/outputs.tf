@@ -120,7 +120,7 @@ output "deployment_instructions" {
     Next steps:
     
     1. Build and push Docker image:
-       cd src/AgentFundraising
+       cd src/Demo.Agent.Fundraising
        docker build -t ${module.container_registry.login_server}/fundraising-agent:latest .
        az acr login --name ${module.container_registry.name}
        docker push ${module.container_registry.login_server}/fundraising-agent:latest

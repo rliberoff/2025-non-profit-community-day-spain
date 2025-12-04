@@ -1,0 +1,41 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.24/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.24",
+    "version": "1.0.0",
+    "id": "${{TEAMS_APP_ID}}",
+    "developer": {
+        "name": "CODERTECTURA",
+        "websiteUrl": "https://codertectura.com/",
+        "privacyUrl": "https://codertectura.com/privacy",
+        "termsOfUseUrl": "https://codertectura.com/privacy"
+    },
+    "name": {
+        "short": "Agent Fundrising [${{APP_NAME_SUFFIX}}]",
+        "full": "Agent Fundrising [${{APP_NAME_SUFFIX}}]"
+    },
+    "description": {
+        "short": "Gestiona campañas de recaudación para ONGs.",
+        "full": "Asistente inteligente para gestionar campañas de recaudación de fondos en organizaciones sin fines de lucro. Ayuda a crear campañas, organizar tareas en tableros Kanban, colaborar con comentarios y generar mensajes de agradecimiento personalizados con IA."
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "accentColor": "#4464ee",
+    "copilotAgents": {
+        "declarativeAgents": [            
+            {
+                "id": "fundraisingAgent",
+                "file": "declarativeAgent.json"
+            }
+        ]
+    },
+    "composeExtensions": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],    
+    "validDomains": [
+        "*.ngrok-free.app"
+    ]
+}
