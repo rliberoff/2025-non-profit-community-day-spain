@@ -308,7 +308,13 @@ terraform plan -var-file="terraform.tfvars"
 terraform apply -var-file="terraform.tfvars"
 ```
 
-## Demo Scenario
+## Session Presentation
+
+This document corresponds to the official presentation of NonProfit Day 2025, an event focused on empowering nonprofit organizations through the use of Microsoft Artificial Intelligence technologies. The session explores how tools such as AI Builder, Copilot Studio, Azure AI Foundry, and Microsoft 365 Copilot can transform operations, expand social impact, and accelerate innovation within the sector.
+
+[Download the session presentation (PDF)](Presentation.pdf)
+
+### Demo Scenario
 
 **Duration**: 10 minutes  
 **Audience**: Technical developers at Non-Profit Community Day Spain
