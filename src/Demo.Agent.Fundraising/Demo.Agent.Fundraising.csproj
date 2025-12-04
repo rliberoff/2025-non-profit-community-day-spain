@@ -4,7 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>AgentFundraising</RootNamespace>
+        <RootNamespace>Demo.Agent.Fundraising</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

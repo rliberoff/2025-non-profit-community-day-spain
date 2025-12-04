@@ -28,7 +28,7 @@ cd 2025-non-profit-community-day-spain
 
 ### 2. Configurar Azure AI Foundry (Opcional)
 
-Edita `src/AgentFundraising/appsettings.Development.json`:
+Edita `src/Demo.Agent.Fundraising/appsettings.Development.json`:
 
 ```json
 {
@@ -44,7 +44,7 @@ Edita `src/AgentFundraising/appsettings.Development.json`:
 ### 3. Restaurar paquetes
 
 ```bash
-cd src/AgentFundraising
+cd src/Demo.Agent.Fundraising
 dotnet restore
 ```
 
@@ -152,7 +152,7 @@ El agente tiene acceso a 11 funciones:
 ## 📦 Arquitectura
 
 ```text
-src/AgentFundraising/
+src/Demo.Agent.Fundraising/
 ├── Agent/
 │   ├── FundraisingAgent.cs    # Clase principal del agente
 │   ├── Tools.cs                # 11 function tools

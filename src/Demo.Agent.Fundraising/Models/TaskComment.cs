@@ -1,4 +1,4 @@
-namespace AgentFundraising.Models;
+namespace Demo.Agent.Fundraising.Models;
 
 /// <summary>
 /// Represents a comment or note added to a task for collaboration.

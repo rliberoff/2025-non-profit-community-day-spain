@@ -1,6 +1,6 @@
-﻿using AgentFundraising.Models;
+﻿using Demo.Agent.Fundraising.Models;
 
-namespace AgentFundraising.Data;
+namespace Demo.Agent.Fundraising.Data;
 
 /// <summary>
 /// Provides sample data for agent demonstration.

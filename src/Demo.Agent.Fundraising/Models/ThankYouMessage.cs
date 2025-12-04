@@ -1,4 +1,4 @@
-namespace AgentFundraising.Models;
+namespace Demo.Agent.Fundraising.Models;
 
 /// <summary>
 /// Represents an AI-generated thank-you message for a donor.

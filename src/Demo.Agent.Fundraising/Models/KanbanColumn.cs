@@ -1,4 +1,4 @@
-namespace AgentFundraising.Models;
+namespace Demo.Agent.Fundraising.Models;
 
 /// <summary>
 /// Represents the columns of a Kanban board for task workflow management.

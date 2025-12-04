@@ -1,4 +1,4 @@
-namespace AgentFundraising.Models;
+namespace Demo.Agent.Fundraising.Models;
 
 /// <summary>
 /// Represents a task within a fundraising campaign, tracked on a Kanban board.

@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
-using AgentFundraising.Agent;
-using AgentFundraising.Data;
-using AgentFundraising.Models;
+using Demo.Agent.Fundraising.Agent;
+using Demo.Agent.Fundraising.Data;
+using Demo.Agent.Fundraising.Models;
 
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
@@ -30,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
 // Configure OpenTelemetry
-var serviceName = "AgentFundraising";
+var serviceName = "Demo.Agent.Fundraising";
 var serviceVersion = "1.0.0";
 
 builder.Services.AddOpenTelemetry()

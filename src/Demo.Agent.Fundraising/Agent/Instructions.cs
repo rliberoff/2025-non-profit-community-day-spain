@@ -1,4 +1,4 @@
-namespace AgentFundraising.Agent;
+namespace Demo.Agent.Fundraising.Agent;
 
 /// <summary>
 /// System instructions for the fundraising agent in Spanish.

@@ -1,16 +1,16 @@
 using System.Diagnostics;
 
-using AgentFundraising.Models;
-using AgentFundraising.Validators;
+using Demo.Agent.Fundraising.Models;
+using Demo.Agent.Fundraising.Validators;
 
-namespace AgentFundraising.Agent;
+namespace Demo.Agent.Fundraising.Agent;
 
 /// <summary>
 /// Function tools available for the fundraising agent.
 /// </summary>
 public class Tools
 {
-    private static readonly ActivitySource ActivitySource = new("AgentFundraising", "1.0.0");
+    private static readonly ActivitySource ActivitySource = new("Demo.Agent.Fundraising", "1.0.0");
 
     // Rate limiting for AI message generation (10 requests per minute)
     private static readonly Queue<DateTime> _aiRequestTimestamps = new();

@@ -55,11 +55,11 @@ The agent helps non-profit organizations manage fundraising campaigns through na
 ```powershell
 # Clone and build
 cd e:\repos\personal\2025-non-profit-community-day-spain
-dotnet restore AgentFundraising.sln
-dotnet build AgentFundraising.sln
+dotnet restore Demo.Agent.Fundraising.sln
+dotnet build Demo.Agent.Fundraising.sln
 
 # Configure Azure credentials
-cd src/AgentFundraising
+cd src/Demo.Agent.Fundraising
 dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-resource>.openai.azure.com/"
 
 # Run the agent
@@ -81,9 +81,9 @@ After deployment, interact with the agent using natural language:
 
 ```text
 src/
-├── AgentFundraising/               # Main agent project
+├── Demo.Agent.Fundraising/         # Main agent project
 │   ├── Agent/                      # Agent implementation
-│   │   ├── AgentFundraising.cs     # Main agent class (TBD)
+│   │   ├── FundraisingAgent.cs     # Main agent class
 │   │   ├── Tools.cs                # Function tools (11 methods)
 │   │   └── Instructions.cs         # Spanish system instructions
 │   ├── Models/                     # Data models (English names)

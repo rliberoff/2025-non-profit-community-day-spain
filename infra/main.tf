@@ -162,7 +162,7 @@ module "linux_web_app" {
     # Logging
     "Logging__LogLevel__Default"              = "Information"
     "Logging__LogLevel__Microsoft.AspNetCore" = "Warning"
-    "Logging__LogLevel__AgentFundraising"     = "Information"
+    "Logging__LogLevel__Demo.Agent.Fundraising" = "Information"
 
     # CORS (if needed)
     "CORS__AllowedOrigins" = "*"

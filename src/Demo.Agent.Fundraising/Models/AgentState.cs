@@ -1,4 +1,4 @@
-namespace AgentFundraising.Models;
+namespace Demo.Agent.Fundraising.Models;
 
 /// <summary>
 /// In-memory state manager for the fundraising agent.

@@ -1,6 +1,6 @@
-using AgentFundraising.Models;
+using Demo.Agent.Fundraising.Models;
 
-namespace AgentFundraising.Validators;
+namespace Demo.Agent.Fundraising.Validators;
 
 /// <summary>
 /// Validator for task-related operations.

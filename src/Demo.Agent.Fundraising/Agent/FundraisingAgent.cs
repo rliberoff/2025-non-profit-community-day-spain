@@ -4,7 +4,7 @@ using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 
-namespace AgentFundraising.Agent;
+namespace Demo.Agent.Fundraising.Agent;
 
 /// <summary>
 /// Main agent class for fundraising campaign management.
